@@ -1,0 +1,80 @@
+---
+title: "NH"
+author: "Kate Davis"
+date: "10/01/2014"
+output: html_document
+---
+```{r set_cookie}
+require(stringr)
+require(httr)
+burl="https://nhlicenses.nh.gov"
+purl="/MyLicense%20Verification/Search.aspx?facility=Y"
+useragent = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/5.0.342.3 Safari/533.2'
+url=paste0(burl,purl)
+
+nhh=handle(url)
+iresp= GET(url=url, add_headers("user-agent" = useragent)) #,query=list(facility="Y"))
+```
+```{r get_liquor}
+thtml=content(iresp, as="text")
+#<input type="hidden" name="__EVENTTARGET" value="" />
+etarget=str_match(thtml,'<input type="hidden" name="__EVENTTARGET" value="(.*?)" />')[,2]
+etarget="t_weblookup__profession_name"
+#<input type="hidden" name="__EVENTARGUMENT" value="" />
+earg=str_match(thtml,'<input type="hidden" name="__EVENTARGUMENT" value="(.*?)" />')[,2]
+#<input type="hidden" name="__VIEWSTATE" value="dDwyMTQxMjc4NDIxO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwxPjs+O2w8dDw7bDxpPDE+Oz47bDx0PDtsPGk8Mz47aTw0PjtpPDU+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwwPjs+O2w8dDx0PDs7bDxpPDA+Oz4+Ozs+Oz4+Oz4+O3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PHQ8OztsPGk8MD47Pj47Oz47Pj47Pj47dDw7bDxpPDE+Oz47bDx0PDtsPGk8MD47PjtsPHQ8dDw7O2w8aTwwPjs+Pjs7Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+tM/VJfy6F2gIWfWO1X+OEy67/go=" />
+viewstate1=str_match(thtml,'<input type="hidden" name="__VIEWSTATE" value="(.*?)" />')[,2]
+#<input type="hidden" name="__VIEWSTATEGENERATOR" value="66F7B38A" />
+vsgen=str_match(thtml,'<input type="hidden" name="__VIEWSTATEGENERATOR" value="(.*?)" />')[,2]
+
+
+parms=list("__EVENTTARGET"=etarget,
+           "__EVENTARGUMENT"=earg,
+           "__VIEWSTATE"=viewstate1,
+           "__VIEWSTATEGENERATOR"=vsgen,
+           t_web_lookup__profession_name="Liquor Commission" ,
+           t_web_lookup__license_type_name="All" ,
+           t_web_lookup__license_status_name="Active" ,
+           t_web_lookup__full_name="",
+           t_web_lookup__license_no="",
+           t_web_lookup__owner_name="",
+           t_web_lookup__doing_business_as="",
+           t_web_lookup__addr_city="",
+           t_web_lookup__addr_county="Carroll")
+#results=postForm(url,style="POST",.params=parms)
+lresp= POST(url=url,encode="form", add_headers("user-agent" = useragent),query=parms,set_cookies=cookies(iresp))
+thtml=content(lresp, as="text")
+```
+
+```{r real-query}
+#<input type="hidden" name="__EVENTTARGET" value="" />
+etarget=str_match(thtml,'<input type="hidden" name="__EVENTTARGET" value="(.*?)" />')[,2]
+#<input type="hidden" name="__EVENTARGUMENT" value="" />
+earg=str_match(thtml,'<input type="hidden" name="__EVENTARGUMENT" value="(.*?)" />')[,2]
+#<input type="hidden" name="__VIEWSTATE" value="dDwyMTQxMjc4NDIxO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwxPjs+O2w8dDw7bDxpPDE+Oz47bDx0PDtsPGk8Mz47aTw0PjtpPDU+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwwPjs+O2w8dDx0PDs7bDxpPDA+Oz4+Ozs+Oz4+Oz4+O3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PHQ8OztsPGk8MD47Pj47Oz47Pj47Pj47dDw7bDxpPDE+Oz47bDx0PDtsPGk8MD47PjtsPHQ8dDw7O2w8aTwwPjs+Pjs7Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+tM/VJfy6F2gIWfWO1X+OEy67/go=" />
+viewstate2=str_match(thtml,'<input type="hidden" name="__VIEWSTATE" value="(.*?)" />')[,2]
+#<input type="hidden" name="__VIEWSTATEGENERATOR" value="66F7B38A" />
+vsgen=str_match(thtml,'<input type="hidden" name="__VIEWSTATEGENERATOR" value="(.*?)" />')[,2]
+parms=list("__EVENTTARGET"=etarget,
+           "__EVENTARGUMENT"=earg,
+           "__VIEWSTATE"=viewstate2,
+           "__VIEWSTATEGENERATOR"=vsgen,
+           t_web_lookup__profession_name="Liquor Commission" ,
+           t_web_lookup__license_type_name="All" ,
+           t_web_lookup__license_status_name="Active" ,
+           t_web_lookup__full_name="",
+           t_web_lookup__license_no="",
+           t_web_lookup__owner_name="",
+           t_web_lookup__doing_business_as="",
+           t_web_lookup__addr_city="",
+           t_web_lookup__addr_county="Carroll")
+lresp= POST(url=url,encode="form", add_headers("user-agent" = useragent),query=parms,set_cookies=cookies(iresp))
+content(lresp,as="text")
+```
+
+
+```{r get-detalis}
+ev=str_match(thtml,'~<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="(.*?)" />~')[,2]
+
+```
+

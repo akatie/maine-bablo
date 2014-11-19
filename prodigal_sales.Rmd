@@ -1,0 +1,42 @@
+---
+title: "Prodigal Sales History"
+author: "Kate Davis"
+date: "11/18/2014"
+output: html_document
+---
+
+```{r setup,echo=FALSE,include=FALSE}
+require(plyr)
+require(reshape2)
+require(ggplot2)
+require(data.table)
+invoice=data.table(readRDS('invoice.rds'))
+invoice$idate=as.Date(invoice$Invoice.Date)
+invoice$imonth=month(invoice$idate)
+invoice$iyear=year(invoice$idate)
+invoice$iym=with(invoice,sprintf("%04d-%02d",iyear,(imonth)))
+ci=invoice[,list(sales=sum(Price*Qty)),by=list(Company.Name,iym)]
+pi=invoice[,list(sales=sum(Price*Qty)),by=list(Item.Name,iym)]
+
+
+```
+
+```{r products}
+psales=dcast(pi,Item.Name~iym,fill=0)
+write.csv(psales,"psales.csv")
+
+```
+
+
+```{r companies}
+csales=dcast(ci,Company.Name~iym,fill=0)
+write.table(csales,"csales.csv",sep="\t",row.names=F,quote=F)
+```
+
+```{r payments}
+#payments=readRDS("payments.rds")
+payments=payments[order(payments$Payment.Date),c("Invoice.Number","Payment.Date","Amount","Method","Reference")]
+write.csv(payments,"payments.txt")
+
+```
+

@@ -1,0 +1,9 @@
+---
+title: "merge json"
+author: "Kate Davis"
+date: "11/15/2014"
+output: html_document
+---
+mejson=fromJSON("json/me.topo.json")
+objs=fromJSON(toJSON(mejson$objects[[1]]$geometries),F,F,T,T)
+

@@ -1,0 +1,68 @@
+```{r load-maine}
+require(XML)
+meurl="http://www.maine.gov/dafs/bablo/active_liquor/Active_Licenses.htm"
+melist= readHTMLTable(meurl,stringsAsFactors = FALSE)
+melist=melist[[2]]
+medata=as.data.frame(melist)
+##(medata$County %in% c("YORK","CUMBERLAND")) |
+## | (medata$County=="OXFORD" & medata$Town %in% c("FRYEBURG","PORTER","STOW","HIRAM","BROWNFIELD","LOVELL","CENTER LOVELL","BALDWIN"))
+tdata=medata[(medata$County %in% c("YORK","CUMBERLAND","OXFORD")),]
+metowns=c("ACTON", "ALFRED", "BROWNFIELD", "BUXTON", "CENTER LOVELL", 
+"DENMARK", "EAST BALDWIN", "EAST WATERBORO", "FRYEBURG", "HIRAM", 
+"LIMERICK", "LIMINGTON", "LONG ISLAND", "LOVELL", "LYMAN", "NORTH WATERBORO", 
+"PARSONSFIELD", "PORTER", "PORTLAND", "SANFORD", "SHAPLEIGH", 
+"SOUTH SANFORD", "SOUTH WATERBORO", "SOUTH WINDHAM", "SPRINGVALE", 
+"STANDISH", "STEEP FALLS", "WATERBORO", "WEST NEWFIELD")
+#tdata=medata[(medata$'City/Town:' %in% metowns),]
+```
+
+
+```{r me-license-details}
+require(RCurl)
+require(plyr)
+require(reshape2)
+agent="Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405"
+options(RCurlOptions = list(verbose = F, 
+                            followlocation = TRUE, timeout = 100, 
+                            useragent = agent, ssl.verifypeer = FALSE))
+#surl="https://www1.maine.gov/dafs/bablo/licensing/search_large.php"
+#sec=getURL(surl)
+lurl="https://www1.maine.gov/dafs/bablo/licensing/license_search.php?license_no=" ## "2100"
+durl=paste0(lurl,tdata$`License #`)
+nlic=nrow(tdata)
+
+for (lic in (1:nlic)){
+  ddata=getURL(durl[lic])
+  tt=readHTMLTable(ddata)
+  lname=tt[["at-page-body"]]
+
+  
+  lls=which(lname$V1 == "License Held")-1
+  if (length(lls)>0){
+    if (lic==1){
+      ldetails <- data.frame(t(rep("somestring",lls)),stringsAsFactors=F)
+      cnames=as.character(lname$V1[1:lls])
+      names(ldetails) <- cnames
+      ldetails <- ldetails[-1,]
+      }
+    ndetails=as.character(lname$V2[1:lls])
+    ndetails=data.frame(t(ndetails),stringsAsFactors=F)
+    names(ndetails) <- cnames
+    ldetails=rbind(ldetails,ndetails)
+    }
+  }
+```
+
+```{r save-files}
+saveRDS(ldetails,file='ldetails.rds')
+saveRDS(tdata,file='tdata.rds')
+```
+
+```{r nerge}
+
+tdata$license=tdata$`License #`
+ldetails$license=ldetails$`License Number:`
+fullfile=merge(ldetails,tdata,all.x=T)
+
+```
+

@@ -1,0 +1,106 @@
+---
+title: "New Hampshire"
+author: "Kate Davis"
+date: "09/02/2014"
+output: html_document
+---
+
+
+```{r curlit}
+require(RCurl)
+url="https://nhlicenses.nh.gov/MyLicense%20Verification/Search.aspx?facility=Y"
+ckfile = paste0("/tmp/", "CURLCOOKIE")
+useragent = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/5.0.342.3 Safari/533.2'
+
+
+f = file('log.txt', 'w') #file to write request header for debug purpose
+options(RCurlOptions = list(verbose = TRUE, followlocation = TRUE, timeout = 100, useragent = useragent,
+                            cookiejar=ckfile))
+thtml = getURL(url);
+require(stringr)
+viewstate=str_match(thtml,'<input type="hidden" name="__VIEWSTATE" value="(.*?)" />')[,2]
+#<input type="hidden" name="__EVENTTARGET" value="" />
+etarget=str_match(thtml,'<input type="hidden" name="__EVENTTARGET" value="(.*?)" />')[,2]
+#<input type="hidden" name="__EVENTARGUMENT" value="" />
+earg=str_match(thtml,'<input type="hidden" name="__EVENTARGUMENT" value="(.*?)" />')[,2]
+#<input type="hidden" name="__VIEWSTATE" value="dDwyMTQxMjc4NDIxO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwxPjs+O2w8dDw7bDxpPDE+Oz47bDx0PDtsPGk8Mz47aTw0PjtpPDU+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwwPjs+O2w8dDx0PDs7bDxpPDA+Oz4+Ozs+Oz4+Oz4+O3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PHQ8OztsPGk8MD47Pj47Oz47Pj47Pj47dDw7bDxpPDE+Oz47bDx0PDtsPGk8MD47PjtsPHQ8dDw7O2w8aTwwPjs+Pjs7Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+tM/VJfy6F2gIWfWO1X+OEy67/go=" />
+viewstate=str_match(thtml,'<input type="hidden" name="__VIEWSTATE" value="(.*?)" />')[,2]
+#<input type="hidden" name="__VIEWSTATEGENERATOR" value="66F7B38A" />
+vsgen=str_match(thtml,'<input type="hidden" name="__VIEWSTATEGENERATOR" value="(.*?)" />')[,2]
+
+
+
+```
+
+```{r re-curl}
+options(RCurlOptions = list(verbose = TRUE, followlocation = TRUE, timeout = 100, useragent = useragent,
+                            cookiejar=ckfile,ssl.verifypeer=FALSE,header=FALSE,stderr=FALSE))
+
+#curlSetOpt( CURLOPT_RETURNTRANSFER, false);
+#curlSetOpt( CURLOPT_COOKIEFILE, $ckfile);
+url="https://nhlicenses.nh.gov/MyLicense%20Verification/Search.aspx?facility=Y"
+parms=list("__EVENTTARGET"=etarget,
+           "__EVENTARGUMENT"=earg,
+           "__VIEWSTATE"=viewstate,
+           "__VIEWSTATEGENERATOR"=vsgen,
+           "t_web_lookup__profession_name"="Liquor Commission")
+ results=postForm(url,style="POST",.params=parms)
+
+```
+
+
+
+```{r doit}
+eventbase= 'datagrid_results:_ctl44:_ctl11'
+parms=list("__EVENTTARGET"="",
+           "__EVENTARGUMENT"="",
+           "__VIEWSTATE"=viewstate,
+           "__VIEWSTATEGENERATOR"=vsgen,
+           t_web_lookup__profession_name="Liquor Commission" ,
+           t_web_lookup__license_type_name="All" ,
+           t_web_lookup__license_status_name="Active" ,
+           t_web_lookup__full_name="",
+           t_web_lookup__license_no="",
+           t_web_lookup__owner_name="",
+           t_web_lookup__doing_business_as="",
+           t_web_lookup__addr_city="",
+           t_web_lookup__addr_county="Carroll")
+
+results=postForm(url,style="POST",.params=parms)
+hurl="https://nhlicenses.nh.gov/MyLicense%20Verification/SearchResults.aspx"
+parms=list("__EVENTTARGET"=eventbase,
+           "__EVENTARGUMENT"="",
+           "__VIEWSTATE"=viewstate)
+#results=postForm(hurl,style="POST",.params=parms)
+
+
+
+```
+
+```{r process-list}
+nfiles=7
+basehref="Details.aspx?(.*?)\"" 
+for (fno in 1:nfiles){
+  fname=paste0("nhcarroll",fno,".html")
+  html <- paste(readLines(fname), collapse="\n")
+  dlinks <- str_match_all(html, basehref)[[1]][,2]
+  nh=readHTMLTable(fname)[["datagrid_results"]]
+  nh=nh[1:(nrow(nh)-1),]
+  nh$dlinks=dlinks  
+  if (fno==1){
+    nhlist=nh
+    } else {
+      nhlist=rbind(nhlist,nh)
+      }
+  
+  }
+```
+
+```{r nh-get-address}
+nfiles=nrow(nhlist)
+for (fno in 1:nfiles){
+  deth=getURL(paste0("https://nhlicenses.nh.gov/MyLicense Verification/Details.aspx?",nhlist$dlinks[fno]))
+  dets=readHTMLTable(deth)
+}
+```
+

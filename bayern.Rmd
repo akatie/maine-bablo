@@ -1,0 +1,36 @@
+---
+title: "Bayern"
+author: "Kate Davis"
+date: "11/10/2014"
+output: html_document
+---
+```{r setup}
+
+basevec=c(55L,50L)
+offset=c(25L,-20L)
+svgs='<polygon points="55,50 15,35 0,0 40,15 " transform="translate(%d,%d)" fill="#e3ffff"/>'
+fn="bayern.svg"
+```
+
+```{r build-matrix}
+for (m in 1:30){
+  b=c(0L,0L)
+  i=-1L
+  while(min(b)>=-20 & i<50){
+    i=i+1
+    b=basevec*m+i*offset
+    
+     write(sprintf(svgs,b[1],b[2]),fn,append=T)
+  }
+  b=c(0L,0L)
+  i=-1L
+  while(min(b)>=-20 & i<50){
+    i=i+1
+    b=basevec*m-i*offset
+    
+    write(sprintf(svgs,b[1],b[2]),fn,append=T)
+  }
+}
+```
+
+<embed src="bayern.svg" type="image/svg+xml" />

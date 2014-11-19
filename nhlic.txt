@@ -1,0 +1,358 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<html>
+	<head>
+		<link rel="stylesheet" href="stylesheets/elicense2000.css">
+			<title>Search</title>
+	</head>
+	<body>
+	</body>
+</html>
+<form name="formSearch" method="post" action="Search.aspx?facility=Y" id="formSearch">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="dDwyMTQxMjc4NDIxO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwxPjs+O2w8dDw7bDxpPDE+Oz47bDx0PDtsPGk8Mz47aTw0PjtpPDU+Oz47bDx0PDtsPGk8MT47PjtsPHQ8O2w8aTwwPjs+O2w8dDx0PDs7bDxpPDA+Oz4+Ozs+Oz4+Oz4+O3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDA+Oz47bDx0PHQ8OztsPGk8MD47Pj47Oz47Pj47Pj47dDw7bDxpPDE+Oz47bDx0PDtsPGk8MD47PjtsPHQ8dDw7O2w8aTwwPjs+Pjs7Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+Pjs+tM/VJfy6F2gIWfWO1X+OEy67/go=" />
+
+<script language="javascript" type="text/javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform;
+		if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) {
+			theform = document.formSearch;
+		}
+		else {
+			theform = document.forms["formSearch"];
+		}
+		theform.__EVENTTARGET.value = eventTarget.split("$").join(":");
+		theform.__EVENTARGUMENT.value = eventArgument;
+		theform.submit();
+	}
+// -->
+</script>
+<table border="0" cellspacing="0" width="100%" cellpadding="0" class="layout">
+	<tr>
+		<td width="100%" height="10" bgcolor="white" rowspan="1" colspan="6"><table border="0" cellspacing="0" width="100%" cellpadding="0">
+			<tr>
+				<td rowspan="1" colspan="2"><span id="banner_image"><table border="0" bgcolor=#bfd29f cellspacing="0" cellpadding="0" width="100%">
+<tr>
+ <td valign="top"> <img src="images/left1.gif"> </td><td valign="top"> <img src="images/rt1.gif" align="right"> </td>
+</tr>
+</table></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td height="100%" bgcolor="#F2F2F5" class="menu" valign="top" rowspan="15" colspan="1"><table cellspacing="0" width="160" bgcolor="#F2F2F5" cellpadding="0" class="menu" valign="top">
+			<tr>
+				<td rowspan="1" colspan="1"><span id="top_spacer">&nbsp;<p></span></td>
+			</tr>
+			<tr>
+				<td align="center" rowspan="1" colspan="1"><a id="nhGov_link" href="http://nh.gov" class="leftlink">nh.gov</a></td>
+			</tr>
+			<tr>
+				<td align="center" rowspan="1" colspan="1"><a id="home_link" href="/" class="leftlink">Licensing Home</a></td>
+			</tr>
+			<tr>
+				<td rowspan="1" colspan="1"><span id="middle_spacer">&nbsp;<p></span></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td align="center" rowspan="1" colspan="1"><a id="complaint_link" href="SubmitComplaint.aspx" class="leftlink"><!-- Submit Complaint --></a></td>
+			</tr>
+		</table>
+		</td>
+		<td cellspacing="0" cellpadding="0" valign="top" rowspan="1" colspan="1"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+		</table>
+		<table border="0" cellspacing="0" width="92%" cellpadding="0">
+			<tr>
+				<td class="modulelabel" rowspan="1" colspan="2"><span id="lab_header" class="modulelabel">Facility Search</span></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td height="230" valign="center" rowspan="1" colspan="2"><span id="search_instructions" class="instructions"><blockquote>The State of New Hampshire Licensing Verification Site allows you to obtain public information regarding a licensed individual or facility.<p> To begin your search, enter the Profession, License Type, and any other criteria to narrow down your search. <p><b>NOTE:</b> If you have partial information, or are not sure of the exact name, <b>use a wildcard search by placing a '*' following the partial data entered</b> (example - not sure if Alan or Allen, enter Al*) to search. <p><b>Profession is a required field, the use of --All-- is not permitted</b></p>
+
+
+
+
+
+<p>Click <a href="Search.aspx?facility=N" class=stateLink>here to search for a Person</a> rather than a facility.</blockquote></span></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="profession_search" class="labelheader">*Profession:</span></td>
+				<td rowspan="1" colspan="1"><select name="t_web_lookup__profession_name" onchange="__doPostBack('t_web_lookup__profession_name','')" language="javascript" id="t_web_lookup__profession_name">
+					<option selected="selected" value="">All</option>
+					<option value="Allied Health">Allied Health</option>
+					<option value="Building Trades">Building Trades</option>
+					<option value="Dental">Dental</option>
+					<option value="ELECTRICIANS">ELECTRICIANS</option>
+					<option value="Liquor Commission">Liquor Commission</option>
+					<option value="Mental Health Practice">Mental Health Practice</option>
+					<option value="Nursing">Nursing</option>
+					<option value="Nursing Assistant">Nursing Assistant</option>
+					<option value="Real Estate">Real Estate</option>
+					<option value="Veterinary Medicine">Veterinary Medicine</option>
+
+				</select>&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="label_licensetype" class="labelheader">License Type:</span></td>
+				<td rowspan="1" colspan="1"><select name="t_web_lookup__license_type_name" id="t_web_lookup__license_type_name">
+					<option selected="selected" value="">All</option>
+					<option value="Agency Store">Agency Store</option>
+					<option value="Airport">Airport</option>
+					<option value="Alcohol Consultant">Alcohol Consultant</option>
+					<option value="Ballroom">Ballroom</option>
+					<option value="Bed and Breakfast">Bed and Breakfast</option>
+					<option value="Beer Festival">Beer Festival</option>
+					<option value="Beverage Manufacturer">Beverage Manufacturer</option>
+					<option value="Beverage Vendor">Beverage Vendor</option>
+					<option value="Brew Pub">Brew Pub</option>
+					<option value="Carrier">Carrier</option>
+					<option value="Caterers Off Site">Caterers Off Site</option>
+					<option value="Caterers On Site">Caterers On Site</option>
+					<option value="Cigar Bar">Cigar Bar</option>
+					<option value="College Club">College Club</option>
+					<option value="Combination">Combination</option>
+					<option value="Convention Center">Convention Center</option>
+					<option value="CPA/PA Firm - Domestic">CPA/PA Firm - Domestic</option>
+					<option value="CPA/PA Firm - Foreign">CPA/PA Firm - Foreign</option>
+					<option value="Dining Car">Dining Car</option>
+					<option value="Direct Shipper Permit">Direct Shipper Permit</option>
+					<option value="Drug Manufacturer/Distributor">Drug Manufacturer/Distributor</option>
+					<option value="Electrical Corporation">Electrical Corporation</option>
+					<option value="Electrical Corporation HMV">Electrical Corporation HMV</option>
+					<option value="Fire Protection Equipment Firm">Fire Protection Equipment Firm</option>
+					<option value="Firm">Firm</option>
+					<option value="Firm - Branch Office">Firm - Branch Office</option>
+					<option value="Gas Business Entity Mechanical">Gas Business Entity Mechanical</option>
+					<option value="Hotel">Hotel</option>
+					<option value="Liquor and Wine Representative">Liquor and Wine Representative</option>
+					<option value="Liquor and Wine Vendor">Liquor and Wine Vendor</option>
+					<option value="Liquor Manufacturer">Liquor Manufacturer</option>
+					<option value="Liquor/Wine/Beverage Warehouse">Liquor/Wine/Beverage Warehouse</option>
+					<option value="LRDD Medical Gases/Prescription Devices">LRDD Medical Gases/Prescription Devices</option>
+					<option value="LRDD Meth Maintenance/Detox Facility">LRDD Meth Maintenance/Detox Facility</option>
+					<option value="LRDD Public Health Clinic">LRDD Public Health Clinic</option>
+					<option value="Mechanical Business Entity">Mechanical Business Entity</option>
+					<option value="Military Club">Military Club</option>
+					<option value="Nano Brewery">Nano Brewery</option>
+					<option value="Non-Resident Pharmacy">Non-Resident Pharmacy</option>
+					<option value="Off-Premises Special">Off-Premises Special</option>
+					<option value="Performing Arts Facility">Performing Arts Facility</option>
+					<option value="Pharmacy (NH)">Pharmacy (NH)</option>
+					<option value="Plumber Business Entity">Plumber Business Entity</option>
+					<option value="Plumber Water Treatment Business Entity">Plumber Water Treatment Business Entity</option>
+					<option value="Public Health Program">Public Health Program</option>
+					<option value="Race Track - Motor Vehicle">Race Track - Motor Vehicle</option>
+					<option value="Race Track - Pari-Mutual">Race Track - Pari-Mutual</option>
+					<option value="Rail Car">Rail Car</option>
+					<option value="Rectifier">Rectifier</option>
+					<option value="Restaurant">Restaurant</option>
+					<option value="Retail Table Wine">Retail Table Wine</option>
+					<option value="Retail Tobacco">Retail Tobacco</option>
+					<option value="Seasonal Airport">Seasonal Airport</option>
+					<option value="Seasonal Ballroom">Seasonal Ballroom</option>
+					<option value="Seasonal Bed and Breakfast">Seasonal Bed and Breakfast</option>
+					<option value="Seasonal Billiards/Pool Hall">Seasonal Billiards/Pool Hall</option>
+					<option value="Seasonal Bowling Facility">Seasonal Bowling Facility</option>
+					<option value="Seasonal Brew Pub">Seasonal Brew Pub</option>
+					<option value="Seasonal Caterers Off Site">Seasonal Caterers Off Site</option>
+					<option value="Seasonal Caterers On Site">Seasonal Caterers On Site</option>
+					<option value="Seasonal Cigar Bar">Seasonal Cigar Bar</option>
+					<option value="Seasonal College Club">Seasonal College Club</option>
+					<option value="Seasonal Combination">Seasonal Combination</option>
+					<option value="Seasonal Convention Center">Seasonal Convention Center</option>
+					<option value="Seasonal Dining Car">Seasonal Dining Car</option>
+					<option value="Seasonal Hotel">Seasonal Hotel</option>
+					<option value="Seasonal Military Club">Seasonal Military Club</option>
+					<option value="Seasonal Performing Arts Facility">Seasonal Performing Arts Facility</option>
+					<option value="Seasonal Race Track - Motor Vehicle">Seasonal Race Track - Motor Vehicle</option>
+					<option value="Seasonal Race Track - Pari-Mutual">Seasonal Race Track - Pari-Mutual</option>
+					<option value="Seasonal Racquet Sports Facility">Seasonal Racquet Sports Facility</option>
+					<option value="Seasonal Rail Car">Seasonal Rail Car</option>
+					<option value="Seasonal Restaurant">Seasonal Restaurant</option>
+					<option value="Seasonal Retail Table Wine">Seasonal Retail Table Wine</option>
+					<option value="Seasonal Ski Area">Seasonal Ski Area</option>
+					<option value="Seasonal Social Club">Seasonal Social Club</option>
+					<option value="Seasonal Sports Recreation Facility">Seasonal Sports Recreation Facility</option>
+					<option value="Seasonal Sports/Entertainment Complex">Seasonal Sports/Entertainment Complex</option>
+					<option value="Seasonal State Fairs">Seasonal State Fairs</option>
+					<option value="Seasonal Tavern">Seasonal Tavern</option>
+					<option value="Seasonal Vessel">Seasonal Vessel</option>
+					<option value="Seasonal Veterans Club">Seasonal Veterans Club</option>
+					<option value="Social Club">Social Club</option>
+					<option value="Special One Day">Special One Day</option>
+					<option value="Sports Recreation Facility">Sports Recreation Facility</option>
+					<option value="Sports/Entertainment Complex">Sports/Entertainment Complex</option>
+					<option value="State Fairs">State Fairs</option>
+					<option value="State Liquor Store">State Liquor Store</option>
+					<option value="State Store">State Store</option>
+					<option value="Tavern">Tavern</option>
+					<option value="Tenant Brewer">Tenant Brewer</option>
+					<option value="Tobacco Sampler License">Tobacco Sampler License</option>
+					<option value="Tobacco Vending">Tobacco Vending</option>
+					<option value="Trade Name">Trade Name</option>
+					<option value="Vessel">Vessel</option>
+					<option value="Veterans Club">Veterans Club</option>
+					<option value="Wholesale Distributor">Wholesale Distributor</option>
+					<option value="Wine Festival">Wine Festival</option>
+					<option value="Wine Manufacturer">Wine Manufacturer</option>
+
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right" rowspan="1" colspan="1"><span id="lab_licstatus" class="labelheader">License Status:</span></td>
+				<td rowspan="1" colspan="1"><select name="t_web_lookup__license_status_name" id="t_web_lookup__license_status_name">
+					<option selected="selected" value="">All</option>
+					<option value="Active">Active</option>
+					<option value="Active - Conditional">Active - Conditional</option>
+					<option value="Active - did not renew">Active - did not renew</option>
+					<option value="Active - encumbered">Active - encumbered</option>
+					<option value="Active Military Leave">Active Military Leave</option>
+					<option value="Active/Pending">Active/Pending</option>
+					<option value="Approved Provider">Approved Provider</option>
+					<option value="Bounced">Bounced</option>
+					<option value="Closed">Closed</option>
+					<option value="Conditional">Conditional</option>
+					<option value="Converted">Converted</option>
+					<option value="Current">Current</option>
+					<option value="Current-Limited">Current-Limited</option>
+					<option value="Deceased">Deceased</option>
+					<option value="Deleted">Deleted</option>
+					<option value="Denied">Denied</option>
+					<option value="Did Not Renew  - Inactive">Did Not Renew  - Inactive</option>
+					<option value="Disciplinary suspension">Disciplinary suspension</option>
+					<option value="Dissolved">Dissolved</option>
+					<option value="Early Renewal">Early Renewal</option>
+					<option value="Expired">Expired</option>
+					<option value="Expired-Renewable">Expired-Renewable</option>
+					<option value="Facility Approved">Facility Approved</option>
+					<option value="Inactive">Inactive</option>
+					<option value="Inactive - did not renew">Inactive - did not renew</option>
+					<option value="Inactive - Probation">Inactive - Probation</option>
+					<option value="Inactive - Suspension">Inactive - Suspension</option>
+					<option value="Inactive Military Leave">Inactive Military Leave</option>
+					<option value="Invalid">Invalid</option>
+					<option value="Issued In Error">Issued In Error</option>
+					<option value="Lapsed">Lapsed</option>
+					<option value="Lapsed for Non-Renewal">Lapsed for Non-Renewal</option>
+					<option value="Late Renewal">Late Renewal</option>
+					<option value="Military">Military</option>
+					<option value="MTS Suspension">MTS Suspension</option>
+					<option value="Null and Void">Null and Void</option>
+					<option value="Out of Business">Out of Business</option>
+					<option value="Pending">Pending</option>
+					<option value="Practice restrictions">Practice restrictions</option>
+					<option value="Pratice restrictions">Pratice restrictions</option>
+					<option value="Probation">Probation</option>
+					<option value="Registry Finding">Registry Finding</option>
+					<option value="Registry Only">Registry Only</option>
+					<option value="Reinstatement Pending">Reinstatement Pending</option>
+					<option value="Restricted">Restricted</option>
+					<option value="Retired">Retired</option>
+					<option value="Returned from Safekeeping">Returned from Safekeeping</option>
+					<option value="Revocation">Revocation</option>
+					<option value="Revoked">Revoked</option>
+					<option value="Safekeeping">Safekeeping</option>
+					<option value="Sold">Sold</option>
+					<option value="Surrendered">Surrendered</option>
+					<option value="Suspended">Suspended</option>
+					<option value="Suspension">Suspension</option>
+					<option value="Temporary">Temporary</option>
+					<option value="Temporary Pending">Temporary Pending</option>
+					<option value="Terminated">Terminated</option>
+					<option value="Transfer Pending">Transfer Pending</option>
+					<option value="Unapproved Provider">Unapproved Provider</option>
+					<option value="Unknown">Unknown</option>
+					<option value="Unlicensed">Unlicensed</option>
+					<option value="Valid">Valid</option>
+					<option value="Voluntary Surrender">Voluntary Surrender</option>
+					<option value="Volunteer">Volunteer</option>
+					<option value="Withdrawn">Withdrawn</option>
+
+				</select></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="label_facility_name" class="labelheader">Facility Name:</span></td>
+				<td rowspan="1" colspan="1"><input name="t_web_lookup__full_name" type="text" id="t_web_lookup__full_name" value="" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="lab_license_no" class="Labelheader">License Number:</span></td>
+				<td rowspan="1" colspan="1"><input name="t_web_lookup__license_no" type="text" id="t_web_lookup__license_no" value="" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="lab_owner" class="Labelheader">Owner:</span></td>
+				<td rowspan="1" colspan="1"><input name="t_web_lookup__owner_name" type="text" id="t_web_lookup__owner_name" value="" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="lab_dba" class="labelheader">DBA:</span></td>
+				<td rowspan="1" colspan="1"><input name="t_web_lookup__doing_business_as" type="text" id="t_web_lookup__doing_business_as" value="" /></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="lab_city" class="labelheader">City:</span></td>
+				<td rowspan="1" colspan="1"><input name="t_web_lookup__addr_city" type="text" id="t_web_lookup__addr_city" value="" /></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" rowspan="1" colspan="1"><span id="lab_county" class="labelheader">County:</span></td>
+				<td rowspan="1" colspan="1"><input name="t_web_lookup__addr_county" type="text" id="t_web_lookup__addr_county" value="" /></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td></td>
+				<td rowspan="1" colspan="1"><input type="submit" name="sch_button" value="Search" onclick="if (typeof(Page_ClientValidate) == 'function') Page_ClientValidate(); " language="javascript" id="sch_button" style="background: #83a0c8;font-size:8pt;font-weight:bold;color:#000066;width:110" /></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td rowspan="1" colspan="2"><span id="lab_req" class="labelheader">* = required. </span></td>
+			</tr>
+			<tr>
+				<td rowspan="1" colspan="2"><span id="lab_ie"><p>This website works best with Internet Explorer.</p></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="1" colspan="6"><table border="0" cellspacing="0" width="100%" cellpadding="0">
+			<tr>
+				<td rowspan="1" colspan="2"><span id="footer"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+ <td>
+  <hr color="bfd29f">
+ </td>
+</tr>
+
+<!-- Footer Information starts here-->
+<tr>
+ <td valign="middle" align="left" class="fineprint">
+  <img src="images/state_seal.gif" width="23" height="23" border="0" alt="State Seal">
+  <a href="http://www.nh.gov" class="fineprint">NH.Gov</a>
+  |&nbsp;&nbsp;&nbsp;
+  <a href="http://www.nh.gov/disclaimer.html" class="fineprint">Privacy Policy</a>
+  |&nbsp;&nbsp;&nbsp;
+  <a href="http://www.nh.gov/wai/index.html" class="fineprint">Accessibility Policy</a>
+
+  |&nbsp;&nbsp;&nbsp;
+  <a href="../Home/contactus.html" class="fineprint">Contact Us</a>
+  
+ </td>
+</tr>
+</table></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+</form>
